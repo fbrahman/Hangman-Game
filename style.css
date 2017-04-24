@@ -1,0 +1,7 @@
+progress, progress::-webkit-progress-bar {
+			background: red;
+		}
+
+progress, progress::-webkit-progress-value {
+			background: yellow;
+		}
