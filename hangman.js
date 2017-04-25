@@ -72,43 +72,31 @@ function setGameBoard(){
 	}
 	document.getElementById("wordToGuess").innerHTML=currentGameBoard.join(" ");
 }
-
+// Setting up the initial game board
 setGameBoard();
 
 //Variable to count the number of correct and incorrect guesses.
 var correctGuess = 0;
 var incorrectGuess = 0;
+// Array to hold all incorrect guesses.
+var incorrectLetterArray = [];
 
 //Function to check what the user typed against guessing word.
 function userInputCheck (x){
 	if (guessingWord.indexOf(x) === -1){
 			incorrectGuess++;
 			hpUpdate();
+			incorrectLetterArray.push(x);
+			document.getElementById("incorrectLetter").innerHTML = incorrectLetterArray.join(" ");
 	}
 	else{
 		for (i=0; i<guessingWord.length; i++){
 			if (guessingWord.charAt(i) === x){
 				correctGuess++;
-			}
-		}
-	}
-}
-
-// Array to hold all incorrect guesses.
-var incorrectLetterArray = [];
-// function to update the the incorrect letter array and the current game board with the correct letters
-function gameBoardUpdate(x){
-	if (guessingWord.indexOf(x)===-1){
-		incorrectLetterArray.push(x);
-		document.getElementById("incorrectLetter").innerHTML = incorrectLetterArray.join(" ");
-	}
-	else {
-		for (i=0; i<guessingWord.length; i++){
-			if(guessingWord.charAt(i) === x){
 				currentGameBoard[i] = x;
 			}
 		}
-	document.getElementById("wordToGuess").innerHTML=currentGameBoard.join(" ");	
+		document.getElementById("wordToGuess").innerHTML=currentGameBoard.join(" ");		
 	}
 }
 
@@ -117,6 +105,23 @@ function hpUpdate (){
 	var hp = document.getElementById("hp")
 	hp.value = (100 - (incorrectGuess*10));
 }
+
+
+// function to update the the incorrect letter array and the current game board with the correct letters (moved to the user input check function)
+// function gameBoardUpdate(x){
+// 	if (guessingWord.indexOf(x)===-1){
+// 		incorrectLetterArray.push(x);
+// 		document.getElementById("incorrectLetter").innerHTML = incorrectLetterArray.join(" ");
+// 	}
+// 	else {
+// 		for (i=0; i<guessingWord.length; i++){
+// 			if(guessingWord.charAt(i) === x){
+// 				currentGameBoard[i] = x;
+// 			}
+// 		}
+// 	document.getElementById("wordToGuess").innerHTML=currentGameBoard.join(" ");	
+// 	}
+// }
 
 //New array to hold each letter in an array.
 // var guessingWordArray = [];
