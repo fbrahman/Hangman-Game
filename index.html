@@ -4,6 +4,8 @@
 	<title>Hangman Game</title>
 	<link rel="stylesheet" type="text/css" href="reset.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
+	<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
 </head>
 <body>
 	<header>
@@ -16,10 +18,8 @@
 		</div>
 		<div class="flex">
 			<div id="leftSide">
-				<strong>HP Bar:</strong>
+				<h2 id="hpText"><strong>HP Bar: </strong></h2>
 				<progress id="hp" value="100" max="100"></progress>
-<!-- 				<br>
-				<meter min="0" max="100" value="50"></meter> -->
 			</div>
 			<div id="rightSide">
 				<span id="wordToGuess"></span>
