@@ -2,11 +2,12 @@
 <html>
 <head>
 	<title>Hangman Game</title>
+	<link rel="stylesheet" type="text/css" href="reset.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 	<header>
-		Hangman Game
+		<h1 id="title">Hangman Game</h1>
 	</header>
 	<section class="main">
 		<div>
@@ -16,7 +17,7 @@
 		<div class="flex">
 			<div id="leftSide">
 				<strong>HP Bar:</strong>
-				<progress id="hp" value="50" max="100"></progress>
+				<progress id="hp" value="100" max="100"></progress>
 <!-- 				<br>
 				<meter min="0" max="100" value="50"></meter> -->
 			</div>
@@ -26,7 +27,9 @@
 		</div>
 	</section>
 	<footer>
-		Copyright Fahad Rahman.
+		<div id="copyright">
+			&#169; Copyright 2017 Fahad Rahman
+		</div>
 	</footer>
 	
 	<script type="text/javascript" src="hangman.js"></script>

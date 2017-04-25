@@ -1,3 +1,32 @@
+html{
+	height: 100%;
+}
+body{
+	background-color: black;
+	color: white;
+	min-height: 100%;
+	
+	display: flex;
+	display: -webkit-flex;
+	display: -ms-flexbox;
+
+	flex-direction: column;
+	-webkit-flex-direction: column;
+	-ms-flex-direction:column;
+}
+
+h1{
+	font-size: 2em;
+}
+
+h2{
+	font-size: 1.5em;
+}
+
+h3{
+	font-size: 1.17em;
+}
+
 progress, progress::-webkit-progress-bar {
 			background: red;
 		}
@@ -5,3 +34,11 @@ progress, progress::-webkit-progress-bar {
 progress, progress::-webkit-progress-value {
 			background: yellow;
 		}
+
+.main {
+	flex:1;
+	-webkit-flex: 1;
+	-moz-webkit-flex: 1;
+	-ms-webkit-flex: 1;
+	-o-webkit-flex: 1;
+}

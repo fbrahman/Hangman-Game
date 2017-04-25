@@ -67,14 +67,15 @@ for (i=0; i<guessingWord.length; i++){
 	}
 }
 
-// Variable to count the number of correct and incorrect guesses.
+//Variable to count the number of correct and incorrect guesses.
 var correctGuess = 0;
 var incorrectGuess = 0;
 
-//function to check what the user typed against guessing word.
+//Function to check what the user typed against guessing word.
 function userInputCheck (x){
 	if (guessingWord.indexOf(x) === -1){
 			incorrectGuess++;
+			hpUpdate();
 	}
 	else{
 		for (i=0; i<guessingWord.length; i++){
@@ -83,6 +84,12 @@ function userInputCheck (x){
 			}
 		}
 	}
+}
+
+//Health bar update
+function hpUpdate (){
+	var hp = document.getElementById("hp")
+	hp.value = (100 - (incorrectGuess*10));
 }
 
 //New array to hold each letter in an array.
