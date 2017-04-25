@@ -33,8 +33,7 @@ var game2 = new game("Sonic the Hedgehog", "Sonic History", "Sonic sound", "Soni
 //Defining instances of systems that will relate back to games
 var system1 = new systems("SEGA", "SEGA background", "SEGA Sound");
 var system2 = new systems("NES");
-var system3 = new systems("Atari 2600");
-var system4 = new systems("Game Boy");
+var system3 = new systems("SNES");
 
 //game background can systems background 
 //game sound can be systems sound "SEGA" or can be intro to game music
@@ -49,11 +48,49 @@ for (i=1; i<=game.instances; i++){
 	//console.log(window[gamevar]);
 	wordArray.push(window[gamevar].gName);
 }
+
 //choose random game from word bank for guessing
 function wordChoice(){
-		var guessingWord = wordArray[Math.floor(Math.random()*wordArray.length)];
-		return guessingWord;
+	return wordArray[Math.floor(Math.random()*wordArray.length)];
 	};
+
+//Assigning random word through function to variable guessing word. Currently only happens at page load.
+var	guessingWord = wordChoice();
+
+//Populate game space with underscore represent each letter of word and spaces where necessary
+for (i=0; i<guessingWord.length; i++){
+	if (guessingWord.charAt(i) !== " "){
+		document.getElementById("wordToGuess").innerHTML += "_ "
+	}
+	else{
+		document.getElementById("wordToGuess").innerHTML+= "&nbsp&nbsp";
+	}
+}
+
+// Variable to count the number of correct and incorrect guesses.
+var correctGuess = 0;
+var incorrectGuess = 0;
+
+//function to check what the user typed against guessing word.
+function userInputCheck (x){
+	if (guessingWord.indexOf(x) === -1){
+			incorrectGuess++;
+	}
+	else{
+		for (i=0; i<guessingWord.length; i++){
+			if (guessingWord.charAt(i) === x){
+				correctGuess++;
+			}
+		}
+	}
+}
+
+//New array to hold each letter in an array.
+// var guessingWordArray = [];
+
+// for (i=0; i<0; i++){
+
+// }
 
 // Testing randomization of array.
 // var objResults = {} 
@@ -64,3 +101,7 @@ function wordChoice(){
 // 		}
 // 		else{ 
 // 			objResults[randomElement] = 1 } } console.log(objResults)
+
+
+// var audio = new Audio('audio_file.mp3');
+// audio.play();
