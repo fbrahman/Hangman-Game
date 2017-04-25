@@ -53,19 +53,27 @@ for (i=1; i<=game.instances; i++){
 function wordChoice(){
 	return wordArray[Math.floor(Math.random()*wordArray.length)];
 	};
-
 //Assigning random word through function to variable guessing word. Currently only happens at page load.
 var	guessingWord = wordChoice();
 
+// Array to hole current state of the game board
+var currentGameBoard = [];
 //Populate game space with underscore represent each letter of word and spaces where necessary
-for (i=0; i<guessingWord.length; i++){
-	if (guessingWord.charAt(i) !== " "){
-		document.getElementById("wordToGuess").innerHTML += "_ "
+function setGameBoard(){
+	for (i=0; i<guessingWord.length; i++){
+		if (guessingWord.charAt(i) !== " "){
+			currentGameBoard.push("_");
+			// document.getElementById("wordToGuess").innerHTML += "_ "
+		}
+		else{
+			// document.getElementById("wordToGuess").innerHTML+= "&nbsp&nbsp";
+			currentGameBoard.push("&nbsp");
+		}
 	}
-	else{
-		document.getElementById("wordToGuess").innerHTML+= "&nbsp&nbsp";
-	}
+	document.getElementById("wordToGuess").innerHTML=currentGameBoard.join(" ");
 }
+
+setGameBoard();
 
 //Variable to count the number of correct and incorrect guesses.
 var correctGuess = 0;
@@ -83,6 +91,24 @@ function userInputCheck (x){
 				correctGuess++;
 			}
 		}
+	}
+}
+
+// Array to hold all incorrect guesses.
+var incorrectLetterArray = [];
+// function to update the the incorrect letter array and the current game board with the correct letters
+function gameBoardUpdate(x){
+	if (guessingWord.indexOf(x)===-1){
+		incorrectLetterArray.push(x);
+		document.getElementById("incorrectLetter").innerHTML = incorrectLetterArray.join(" ");
+	}
+	else {
+		for (i=0; i<guessingWord.length; i++){
+			if(guessingWord.charAt(i) === x){
+				currentGameBoard[i] = x;
+			}
+		}
+	document.getElementById("wordToGuess").innerHTML=currentGameBoard.join(" ");	
 	}
 }
 
