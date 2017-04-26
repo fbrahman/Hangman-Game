@@ -22,6 +22,8 @@ body{
 	-webkit-flex-direction: column;
 	-ms-flex-direction:column;
 
+	background-size: 100% 100%;
+
 	/*font-family: 'Press Start 2P', cursive; player 2p*/
 }
 

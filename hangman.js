@@ -51,7 +51,7 @@ for (i=1; i<=game.instances; i++){
 
 //choose random game from word bank for guessing
 function wordChoice(){
-	return wordArray[Math.floor(Math.random()*wordArray.length)];
+	return wordArray[Math.floor(Math.random()*wordArray.length)].toUpperCase();
 	};
 //Assigning random word through function to variable guessing word. Currently only happens at page load.
 var	guessingWord = wordChoice();
@@ -82,11 +82,18 @@ var userGuess = " ";
 document.onkeypress = function(keypress){
 	userGuess = keypress.key;
 	// console.log(userGuess);
+	userGuess = userGuess.toUpperCase();
+	console.log(userGuess);
+	console.log(hp.value);
 	var letters = /^[A-Za-z]+$/;
-	if (userGuess.match(letters)){
-		console.log("true");
-		userInputCheck(userGuess);
-	} 
+	if (!WinLose(hp)){
+		if (userGuess.match(letters)){
+			userInputCheck(userGuess);
+		} 
+		else{
+			return;
+		}
+	}
 	else{
 		return;
 	} 
@@ -100,28 +107,44 @@ var incorrectLetterArray = [];
 
 //Function to check what the user typed against guessing word.
 function userInputCheck (x){
-	if (guessingWord.indexOf(x) === -1){
-			incorrectGuess++;
-			hpUpdate();
-			incorrectLetterArray.push(x);
-			document.getElementById("incorrectLetter").innerHTML = incorrectLetterArray.join(" ");
+	if (incorrectLetterArray.indexOf(x) === -1){
+		if (guessingWord.indexOf(x) === -1){
+				incorrectGuess++;
+				hpUpdate();
+				incorrectLetterArray.push(x);
+				document.getElementById("incorrectLetter").innerHTML = incorrectLetterArray.join(" ");
+		}
+		else{
+			for (i=0; i<guessingWord.length; i++){
+				if (guessingWord.charAt(i) === x){
+					correctGuess++;
+					currentGameBoard[i] = x;
+				}
+			}
+			document.getElementById("wordToGuess").innerHTML=currentGameBoard.join(" ");	
+		}
 	}
 	else{
-		for (i=0; i<guessingWord.length; i++){
-			if (guessingWord.charAt(i) === x){
-				correctGuess++;
-				currentGameBoard[i] = x;
-			}
-		}
-		document.getElementById("wordToGuess").innerHTML=currentGameBoard.join(" ");		
+		return;
 	}
-}
+};
 
 //Health bar update
 function hpUpdate (){
 	var hp = document.getElementById("hp")
 	hp.value = (100 - (incorrectGuess*10));
 }
+
+// Checks to see if the game if over
+function WinLose(hpts){
+	if(currentGameBoard.indexOf("_") === -1 || hpts.value === 0){
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 
 
 // function to update the the incorrect letter array and the current game board with the correct letters (moved to the user input check function)
