@@ -70,10 +70,27 @@ function setGameBoard(){
 			currentGameBoard.push("&nbsp");
 		}
 	}
+	//outputs the game board with "_" for each letter and spaces for inbetween 
 	document.getElementById("wordToGuess").innerHTML=currentGameBoard.join(" ");
 }
 // Setting up the initial game board
 setGameBoard();
+
+//Global variable to capture userGuess
+var userGuess = " ";
+//Capture Userinput from keyboard
+document.onkeypress = function(keypress){
+	userGuess = keypress.key;
+	// console.log(userGuess);
+	var letters = /^[A-Za-z]+$/;
+	if (userGuess.match(letters)){
+		console.log("true");
+		userInputCheck(userGuess);
+	} 
+	else{
+		return;
+	} 
+};
 
 //Variable to count the number of correct and incorrect guesses.
 var correctGuess = 0;
