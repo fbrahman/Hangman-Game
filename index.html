@@ -12,14 +12,24 @@
 		<h1 id="title">Hangman Game</h1>
 	</header>
 	<section class="mainGame">
-		<div>
+		<div id="infoBar">
 			<h2>You won!</h2>
-			<span id="gameInfo"> </span>
+			<div><span id="gameInfo"> </span></div>
 		</div>
-		<div class="flex">
+		<div class="flexBody">
 			<div id="leftSide">
-				<h2 id="hpText"><strong>HP Bar: </strong></h2>
-				<progress id="hp" value="100" max="100"></progress>
+				<div id="directions">
+					<h2 id="directionHeading">Game Directions: </h2>
+					<p id="directionText">Press a key to guess a letter.</p>
+				</div>
+				<div id="hp">
+					<h2 id="hpHeading">HP Bar: </h2>
+					<progress id="hpBar" value="100" max="100"></progress>
+				</div>
+				<div id="hint">
+					<h2 id="hintHeading">Hint: </h2>
+					<p id="hintText">The golden age of gaming. Guess the name of the game! The background is the key.</p>
+				</div>
 			</div>
 			<div id="rightSide">
 				<div><span id="wordToGuess"></span></div>

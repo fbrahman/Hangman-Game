@@ -1,5 +1,5 @@
 //Object definition for games and their associated properties
-function game (gameName, gameHistory, gameSound, gameBackground, gameConsole){
+function game(gameName, gameHistory, gameSound, gameBackground, gameConsole){
 
 	this.gName=gameName;
 	this.gHistory=gameHistory;
@@ -31,9 +31,28 @@ var game2 = new game("Sonic the Hedgehog", "Sonic History", "Sonic sound", "Soni
 
 
 //Defining instances of systems that will relate back to games
-var system1 = new systems("SEGA", "SEGA background", "SEGA Sound");
+var system1 = new systems("SEGA");
 var system2 = new systems("NES");
 var system3 = new systems("SNES");
+
+//Setting system backgrounds
+system1.sbackground= [
+	 "url(assets/systems/sega/background/sega1.png)"
+	,"url(assets/systems/sega/background/sega2.png)"
+	,"url(assets/systems/sega/background/sega3.jpg)"
+];
+
+system2.sbackground= [
+	 "url(assets/systems/nes/background/nes1.jpg)"
+	,"url(assets/systems/nes/background/nes2.jpg)"
+	,"url(assets/systems/nes/background/nes3.png)"	
+];
+
+system3.sbackground= [
+	 "url(assets/systems/snes/background/snes1.jpeg)"
+	,"url(assets/systems/snes/background/snes2.jpg)"
+	,"url(assets/systems/snes/background/snes3.png)"
+];
 
 //game background can systems background 
 //game sound can be systems sound "SEGA" or can be intro to game music
@@ -42,19 +61,55 @@ var system3 = new systems("SNES");
 //Word bank of game names for guessing purposes
 var wordArray = [];
 
+//Game instance that is picked randomly and the related system.
+var currentGame = " ";
+var currentSystem = " ";
+
 //Populates word bank will always equal to the number of instances of game there are.
 for (i=1; i<=game.instances; i++){
-	var gamevar = "game" + i;
-	//console.log(window[gamevar]);
-	wordArray.push(window[gamevar].gName);
+	var gameVar = "game" + i;
+	//console.log(window[gameVar]);
+	wordArray.push(window[gameVar].gName);
 }
 
+//Word choice index
+var wordChoiceIndex = "";
 //choose random game from word bank for guessing
 function wordChoice(){
-	return wordArray[Math.floor(Math.random()*wordArray.length)].toUpperCase();
+	wordChoiceIndex = Math.floor(Math.random()*wordArray.length); 
+	return wordArray[wordChoiceIndex].toUpperCase();
 	};
 //Assigning random word through function to variable guessing word. Currently only happens at page load.
 var	guessingWord = wordChoice();
+
+//Setting background to system
+function findCurrentPick() {
+	var currentGameName = wordArray[wordChoiceIndex];
+	//console.log("This is the variable ", currentGameName)
+	for(i = 1; i<=game.instances; i++){
+		var gameVar = "game" + i;
+		if (window[gameVar].gName === currentGameName){
+			//Assigning current game stored into global variable currentGame.
+			currentGame = window[gameVar];
+
+			for(i = 1; i<=systems.instances; i++){
+				var systemVar = "system" + i;
+				if (currentGame.gConsole === window[systemVar].sName){
+					//console.log(currentGame.gConsole, window[systemVar].sName);
+					
+					//Assign current system into global variable current system;
+					currentSystem = window[systemVar];
+					
+					return currentSystem.sbackground;
+				}
+				else {
+					console.log("false");
+
+				}
+			}
+		}
+	}
+};
 
 // Array to hole current state of the game board
 var currentGameBoard = [];
@@ -84,7 +139,7 @@ document.onkeypress = function(keypress){
 	// console.log(userGuess);
 	userGuess = userGuess.toUpperCase();
 	console.log(userGuess);
-	console.log(hp.value);
+	console.log(hpBar.value);
 	var letters = /^[A-Za-z]+$/;
 	if (!WinLose(hp)){
 		if (userGuess.match(letters)){
@@ -131,7 +186,7 @@ function userInputCheck (x){
 
 //Health bar update
 function hpUpdate (){
-	var hp = document.getElementById("hp")
+	var hp = document.getElementById("hpBar")
 	hp.value = (100 - (incorrectGuess*10));
 }
 

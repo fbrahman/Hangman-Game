@@ -23,7 +23,6 @@ body{
 	-ms-flex-direction:column;
 
 	background-size: 100% 100%;
-
 	/*font-family: 'Press Start 2P', cursive; player 2p*/
 }
 
@@ -43,6 +42,7 @@ h1{
 
 h2{
 	font-size: 1.5em;
+	font-weight: bold;
 }
 
 h3{
@@ -99,7 +99,7 @@ progress, progress::-webkit-progress-value {
 }
 
 /*flex box for main section elements*/
-.flex{
+.flexBody{
 	display: flex;
 	border-style: solid;
 	border-width: 5px;
@@ -119,6 +119,6 @@ progress, progress::-webkit-progress-value {
 
 }
 
-#hpText{
+#hpHeading{
 	padding: 2%;
 }
