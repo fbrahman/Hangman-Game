@@ -2,7 +2,8 @@
 <html>
 <head>
 	<title>Hangman Game</title>
-	<link rel="stylesheet" type="text/css" href="reset.css">
+	<!-- <link rel="stylesheet" type="text/css" href="reset.css"> -->
+	<link rel="stylesheet" type="text/css" href="https://necolas.github.io/normalize.css/6.0.0/normalize.css">
 	<link rel="stylesheet" type="text/css" href="style.css">
 	<link href="https://fonts.googleapis.com/css?family=Monoton" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
@@ -11,13 +12,23 @@
 	<header>
 		<h1 id="title">Hangman Game</h1>
 	</header>
-	<section class="mainGame">
-		<div id="infoBar">
+	<section class="mainSection">
+		
+		<div class="startUp">
+			<h2 id="welcomeHeader">Welcome to the Classic Game Hangman</h2>
+			<p id="welcomeText">The goal is to guess the title of the classic game. All console games from NES | SNES | SEGA Genesis are fair play!</p>
+			<p id="startText" class="blink_me">1P Press Start</p>
+			<button id="startButton">START</button>
+		</div>
+
+	<!-- 		
+	Info bar to show up after win or lose of the game
+			<div id="infoBar">
 			<h2>You won!</h2>
 			<div><span id="gameInfo"> </span></div>
-		</div>
-		<div class="flexBody">
-			<div id="leftSide">
+		</div> -->
+		<div class="flexBodyGame">
+			<div id="leftSide" class="flexLeft">
 				<div id="directions">
 					<h2 id="directionHeading">Game Directions: </h2>
 					<p id="directionText">Press a key to guess a letter.</p>
@@ -31,10 +42,14 @@
 					<p id="hintText">The golden age of gaming. Guess the name of the game! The background is the key.</p>
 				</div>
 			</div>
-			<div id="rightSide">
-				<div><span id="wordToGuess"></span></div>
-				<br>
-				<div>Incorrect Guesses:<span id="incorrectLetter"></span></div>
+			<div id="rightSide" class="flexRight">
+				<div id="wordToGuess">
+					<span id="wordToGuessBoard"></span>
+				</div>
+				<div id="incorrectGuess">
+					<h2 id="incorrectGuessHeading">Incorrect Guesses:</h2> 
+					<p id="incorrectGuessArray"><span id="incorrectLetter"></span></p>
+				</div>
 			</div>
 		</div>
 	</section>
@@ -45,6 +60,5 @@
 	</footer>
 	
 	<script type="text/javascript" src="hangman.js"></script>
-
 </body>
 </html>

@@ -13,6 +13,7 @@ body{
 	background-color: black;
 	color: white;
 	height: 100%;
+	margin: 0;
 	
 	display: flex;
 	display: -webkit-flex;
@@ -23,40 +24,47 @@ body{
 	-ms-flex-direction:column;
 
 	background-size: 100% 100%;
-	/*font-family: 'Press Start 2P', cursive; player 2p*/
+	font-family: 'Press Start 2P', cursive; player 2p
+
+	font-size: .9em;
 }
 
 header{
 	text-align: center;
-	margin: 1%;
 }
 
 footer{
-	text-align: center;
-	font-size: 1em;
 }
 
 h1{
 	font-size: 2em;
+	margin: 0;
 }
 
 h2{
-	font-size: 1.5em;
-	font-weight: bold;
+	font-size: 1.1em;
+	/*font-weight: bold;*/
 }
 
 h3{
-	font-size: 1.17em;
+	font-size: 1em;
 }
 
-strong{
-	font-weight: bold;
+div{
+	border-style: solid;
+	border-width: 1px;
+	border-color: yellow;
 }
+p{
+	font-size: .85em;
+	line-height: 1.7em;
+}
+
 
 /*progess bar reformatting for yellow and red theme*/
 progress, progress[role]{
 	width: 100%;
-	height: 1.75em;
+	height: 2em;
 }
 
 progress, progress::-webkit-progress-bar {
@@ -66,6 +74,8 @@ progress, progress::-webkit-progress-bar {
 progress, progress::-webkit-progress-value {
 			background: yellow;
 		}
+
+/*Styling for IDs and Classes*/
 
 /*Styling for "Hangman Game"*/
 #title {
@@ -86,7 +96,9 @@ progress, progress::-webkit-progress-value {
   transition: all 200ms cubic-bezier(0.42, 0, 0.58, 1) 10ms;
 }
 
-.mainGame{
+
+/*Main game styling*/
+.mainSection{
 	flex:1;
 	-webkit-flex: 1;
 	-moz-webkit-flex: 1;
@@ -95,18 +107,25 @@ progress, progress::-webkit-progress-value {
 
 	margin: 0 auto;
 	padding: 0;
-	width: 750px;
+	width: 850px;
 }
 
-/*flex box for main section elements*/
-.flexBody{
+#copyright{
+	text-align: center;
+	font-size: .75em;
+	padding-bottom: 1%;
+}
+
+/*Main game board styling*/
+.flexBodyGame{
 	display: flex;
 	border-style: solid;
 	border-width: 5px;
 	border-color: red;
 	/*justify-content: center;*/
 	/*align-items: center;*/
-	min-height: 90%;
+	min-height: 95%;
+	display:none;
 }
 
 #rightSide, #leftSide{
@@ -116,9 +135,83 @@ progress, progress::-webkit-progress-value {
 	margin: 1%;
 	padding: 2%;
 	flex: 1;
-
 }
 
 #hpHeading{
-	padding: 2%;
+	/*padding: 2%;*/
+}
+
+/*Styling for left column*/
+.flexLeft{
+	display: flex;
+	flex-direction: column;
+}
+
+#hp{
+	flex:2;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+/*Styling for right column*/
+.flexRight{
+	display: flex;
+	flex-direction: column;
+}
+
+#wordToGuess{
+	flex:1;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#wordToGuessBoard{
+	white-space: nowrap;
+}
+
+#incorrectGuess{
+	flex:1;
+}
+
+#incorrectGuessArray{
+	text-align: center;
+	color: red;
+}
+
+/*Start-Up Screen Styling*/
+.startUp{
+	text-align: center;
+	border-style: dashed;
+	padding: .5em;
+}
+
+#startButton{
+	border-width: 1px;
+	border-style: dashed;
+	border-color: white;
+	background: black;
+	border-radius: .5em;	
+	color: white;
+	padding: 1em 2em;
+	text-align: center;
+	font-family: 'Press Start 2P', cursive; player 2p;
+	font-size: 16px;
+	margin: 4px 2px;
+}
+
+#welcomeText{
+	text-align: justify;
+	padding: 0 1%;
+}
+
+/*Styling to blink text*/
+.blink_me {
+  animation: blinker 1.4s linear infinite;
+}
+
+@keyframes blinker {  
+  50% { opacity: 0; }
 }

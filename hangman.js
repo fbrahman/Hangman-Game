@@ -28,6 +28,7 @@ systems.instances=0;
 //Defining instances of games that will make up the word bank
 var game1 = new game("Streets of Rage", "Rage History", "Rage sound", "Rage background", "SEGA");
 var game2 = new game("Sonic the Hedgehog", "Sonic History", "Sonic sound", "Sonic background", "SEGA");
+var game3 = new game("Super Mario Bros", "Mario History", "Mario Sound", "Mario Background", "NES");
 
 
 //Defining instances of systems that will relate back to games
@@ -82,7 +83,7 @@ function wordChoice(){
 //Assigning random word through function to variable guessing word. Currently only happens at page load.
 var	guessingWord = wordChoice();
 
-//Setting background to system
+//Setting 'current' variables to current game and system
 function findCurrentPick() {
 	var currentGameName = wordArray[wordChoiceIndex];
 	//console.log("This is the variable ", currentGameName)
@@ -111,7 +112,22 @@ function findCurrentPick() {
 	}
 };
 
-// Array to hole current state of the game board
+//Setting the theme of the game
+function setupTheme(){
+	findCurrentPick();
+	
+	var cGameVar = currentGame;
+	var cSystemVar = currentSystem;
+	var sBackgroundVar = " ";
+
+	//choosing random background of the game board to system of game
+	sBackgroundVar = cSystemVar.sbackground[Math.floor(Math.random()*cSystemVar.sbackground.length)];
+	//setting background to the chosen background
+	document.body.style.backgroundImage = sBackgroundVar;
+
+}
+
+// Array to hold current state of the game board
 var currentGameBoard = [];
 //Populate game space with underscore represent each letter of word and spaces where necessary
 function setGameBoard(){
@@ -126,7 +142,7 @@ function setGameBoard(){
 		}
 	}
 	//outputs the game board with "_" for each letter and spaces for inbetween 
-	document.getElementById("wordToGuess").innerHTML=currentGameBoard.join(" ");
+	document.getElementById("wordToGuess").innerHTML=currentGameBoard.join("");
 }
 // Setting up the initial game board
 setGameBoard();
@@ -176,7 +192,7 @@ function userInputCheck (x){
 					currentGameBoard[i] = x;
 				}
 			}
-			document.getElementById("wordToGuess").innerHTML=currentGameBoard.join(" ");	
+			document.getElementById("wordToGuess").innerHTML=currentGameBoard.join("");	
 		}
 	}
 	else{
