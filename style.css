@@ -154,6 +154,11 @@ progress, progress::-webkit-progress-value {
 	justify-content: center;
 }
 
+#hintText{
+	text-align: justify;
+	padding: 1%;
+}
+
 /*Styling for right column*/
 .flexRight{
 	display: flex;
@@ -186,6 +191,10 @@ progress, progress::-webkit-progress-value {
 	text-align: center;
 	border-style: dashed;
 	padding: .5em;
+	display:flex;
+	flex-direction: column;
+	/*display: none;*/
+	margin-top: 10%;
 }
 
 #startButton{
