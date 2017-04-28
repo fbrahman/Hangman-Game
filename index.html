@@ -19,7 +19,7 @@
 			<h2 id="welcomeHeader">Welcome to the Classic Game Hangman</h2>
 			<p id="welcomeText">The goal is to guess the title of the classic game. All console games from NES | SNES | SEGA Genesis are fair play!</p>
 			<p id="startText" class="blink_me">1P Press Start</p>
-			<button id="startButton" type="button">START</button>
+			<button id="startButton" type="button" onclick="initialize();">START</button>
 		</div>
 	<!-- 		
 	Info bar to show up after win or lose of the game
@@ -27,7 +27,7 @@
 			<h2>You won!</h2>
 			<div><span id="gameInfo"> </span></div>
 		</div> -->
-		<div class="flexBodyGame">
+		<div class="flexBodyGame invisible">
 			<div id="leftSide" class="flexLeft">
 				<div id="directions">
 					<h2 id="directionHeading">Game Directions: </h2>

@@ -216,7 +216,22 @@ function WinLose(hpts){
 	}
 }
 
+// Initialize on function
+function initialize (){
+	//Initialize global variables
+	guessingWord = wordChoice();
+	currentGameBoard=[];
 
+	correctGuess = 0;
+	incorrectGuess = 0;
+	incorrectLetterArray=[];
+
+	setupTheme();
+	setGameBoard();
+
+	document.getElementsByClassName("startUp")[0].classList.toggle("invisible");
+	document.getElementsByClassName("flexBodyGame")[0].classList.toggle("invisible");
+}
 
 // function to update the the incorrect letter array and the current game board with the correct letters (moved to the user input check function)
 // function gameBoardUpdate(x){
