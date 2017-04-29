@@ -81,6 +81,13 @@ system4.sbackground=[
 	,"url(assets/Systems/GameBoy/Background/GBOY5.jpg)"
 	]
 
+// Setting system audio
+system1.sSound="assets/Systems/Sega/Sounds/SEGA1.mp3";
+system2.sSound="assets/Systems/NES/Sounds/NES1.mp3";
+system3.sSound="assets/Systems/SNES/Sounds/SNES1.mp3";
+system4.sSound="assets/Systems/GameBoy/Sounds/GBOY1.mp3";
+
+
 //game background can systems background 
 //game sound can be systems sound "SEGA" or can be intro to game music
 	// music can be played at the start of the round as a hint or as a winning feature not sure which
@@ -137,7 +144,8 @@ function findCurrentPick() {
 		}
 	}
 };
-
+// Global variable for system start up sound.
+var systemStartUpSound = new Audio(system4.sSound);
 //Setting the theme of the game
 function setupTheme(){
 	findCurrentPick();
@@ -151,6 +159,9 @@ function setupTheme(){
 	//setting background to the chosen background
 	document.body.style.backgroundImage = sBackgroundVar;
 
+	//setting up Audio
+	systemStartUpSound = new Audio(cSystemVar.sSound);
+	systemStartUpSound.play(); 
 };
 
 // Array to hold current state of the game board
@@ -257,6 +268,11 @@ function WinLosePopUp(hpts){
 
 // Initialize on function
 function initialize (){
+	//Pause any music currently playing.
+	if (!systemStartUpSound.paused){
+		systemStartUpSound.pause();
+	}
+
 	//Initialize global variables
 	guessingWord = wordChoice();
 	currentGameBoard=[];
