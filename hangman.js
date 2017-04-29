@@ -88,10 +88,6 @@ system3.sSound="assets/Systems/SNES/Sounds/SNES1.mp3";
 system4.sSound="assets/Systems/GameBoy/Sounds/GBOY1.mp3";
 
 
-//game background can systems background 
-//game sound can be systems sound "SEGA" or can be intro to game music
-	// music can be played at the start of the round as a hint or as a winning feature not sure which
-
 //Word bank of game names for guessing purposes
 var wordArray = [];
 
@@ -144,7 +140,7 @@ function findCurrentPick() {
 		}
 	}
 };
-// Global variable for system start up sound.
+// Global variable for system start up sound intialize with shortest audio file.
 var systemStartUpSound = new Audio(system4.sSound);
 //Setting the theme of the game
 function setupTheme(){
