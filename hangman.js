@@ -97,7 +97,7 @@ for (i=1; i<=game.instances; i++){
 	var gameVar = "game" + i;
 	// console.log(window[gameVar]);
 	wordArray.push(window[gameVar].gName);
-}
+};
 
 //Word choice index
 var wordChoiceIndex = "";
@@ -151,7 +151,7 @@ function setupTheme(){
 	//setting background to the chosen background
 	document.body.style.backgroundImage = sBackgroundVar;
 
-}
+};
 
 // Array to hold current state of the game board
 var currentGameBoard = [];
@@ -169,9 +169,7 @@ function setGameBoard(){
 	}
 	//outputs the game board with "_" for each letter and spaces for inbetween 
 	document.getElementById("wordToGuess").innerHTML=currentGameBoard.join("");
-}
-// Setting up the initial game board
-setGameBoard();
+};
 
 //Global variable to capture userGuess
 var userGuess = " ";
@@ -186,7 +184,7 @@ document.onkeypress = function(keypress){
 	if (!WinLose(hpBar)){
 		if (userGuess.match(letters)){
 			userInputCheck(userGuess);
-			console.log("Hello this is from inside the loop!")
+			// console.log("Hello this is from inside the loop!")
 		} 
 		else{
 			return;
@@ -211,6 +209,7 @@ function userInputCheck (x){
 				hpUpdate();
 				incorrectLetterArray.push(x);
 				document.getElementById("incorrectLetter").innerHTML = incorrectLetterArray.join(" ");
+				WinLosePopUp(hpBar);
 		}
 		else{
 			for (i=0; i<guessingWord.length; i++){
@@ -219,7 +218,8 @@ function userInputCheck (x){
 					currentGameBoard[i] = x;
 				}
 			}
-			document.getElementById("wordToGuess").innerHTML=currentGameBoard.join("");	
+			document.getElementById("wordToGuess").innerHTML=currentGameBoard.join("");
+			WinLosePopUp(hpBar);
 		}
 	}
 	else{
@@ -231,7 +231,7 @@ function userInputCheck (x){
 function hpUpdate (){
 	var hp = document.getElementById("hpBar")
 	hp.value = (100 - (incorrectGuess*10));
-}
+};
 
 // Checks to see if the game if over
 function WinLose(hpts){
@@ -241,7 +241,19 @@ function WinLose(hpts){
 	else {
 		return false;
 	}
-}
+};
+
+function WinLosePopUp(hpts){
+	if(currentGameBoard.indexOf("_")===-1){
+		document.getElementsByClassName("flexBodyGame")[0].classList.toggle("invisible");
+		document.getElementsByClassName("win")[0].classList.toggle("invisible");
+		document.getElementById("winWord").innerHTML = guessingWord;
+	}
+	else if (hpts.value ===0){
+		document.getElementsByClassName("flexBodyGame")[0].classList.toggle("invisible");
+		document.getElementsByClassName("lose")[0].classList.toggle("invisible");
+	};
+};
 
 // Initialize on function
 function initialize (){
@@ -266,6 +278,10 @@ function initialize (){
 	else if(!document.getElementsByClassName("win")[0].classList.contains("invisible")){
 		document.getElementsByClassName("flexBodyGame")[0].classList.toggle("invisible");
 		document.getElementsByClassName("win")[0].classList.toggle("invisible");
+	}
+	else if(!document.getElementsByClassName("lose")[0].classList.contains("invisible")){
+		document.getElementsByClassName("flexBodyGame")[0].classList.toggle("invisible");
+		document.getElementsByClassName("lose")[0].classList.toggle("invisible");
 	}
 };
 

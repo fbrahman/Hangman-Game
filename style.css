@@ -180,7 +180,7 @@ progress, progress::-webkit-progress-value {
 }
 
 /*Start-Up Screen Styling*/
-.startUp, .win{
+.startUp, .win, .lose{
 	text-align: center;
 	border-style: dashed;
 	border-color: yellow;
@@ -190,7 +190,7 @@ progress, progress::-webkit-progress-value {
 	margin-top: 10%;
 }
 
-#startButton, #resetButton, #playAgain{
+#startButton, #resetButton, #playAgain, #tryAgain{
 	border-width: 1px;
 	border-style: dashed;
 	border-color: white;
