@@ -95,7 +95,7 @@ var currentSystem = " ";
 //Populates word bank will always equal to the number of instances of game there are.
 for (i=1; i<=game.instances; i++){
 	var gameVar = "game" + i;
-	console.log(window[gameVar]);
+	// console.log(window[gameVar]);
 	wordArray.push(window[gameVar].gName);
 }
 
@@ -183,9 +183,10 @@ document.onkeypress = function(keypress){
 	console.log(userGuess);
 	console.log(hpBar.value);
 	var letters = /^[A-Za-z]+$/;
-	if (!WinLose(hp)){
+	if (!WinLose(hpBar)){
 		if (userGuess.match(letters)){
 			userInputCheck(userGuess);
+			console.log("Hello this is from inside the loop!")
 		} 
 		else{
 			return;
@@ -248,9 +249,12 @@ function initialize (){
 	guessingWord = wordChoice();
 	currentGameBoard=[];
 
+	incorrectLetterArray=[];
 	correctGuess = 0;
 	incorrectGuess = 0;
-	incorrectLetterArray=[];
+	hpUpdate();
+
+	document.getElementById("incorrectLetter").innerHTML = incorrectLetterArray.join("");
 
 	setupTheme();
 	setGameBoard();
