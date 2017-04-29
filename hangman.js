@@ -45,40 +45,40 @@ var system4 = new systems("GBOY");
 
 //Setting system backgrounds
 system1.sbackground= [
-	 "url(assets/systems/sega/background/sega1.png)"
-	,"url(assets/systems/sega/background/sega2.png)"
-	,"url(assets/systems/sega/background/sega3.jpg)"
-	,"url(assets/systems/sega/background/sega4.jpg)"
-	,"url(assets/systems/sega/background/sega5.png)"
-	,"url(assets/systems/sega/background/sega6.gif)"
+	 "url(assets/systems/sega/background/SEGA1.png)"
+	,"url(assets/systems/sega/background/SEGA2.png)"
+	,"url(assets/systems/sega/background/SEGA3.jpg)"
+	,"url(assets/systems/sega/background/SEGA4.jpg)"
+	,"url(assets/systems/sega/background/SEGA5.png)"
+	,"url(assets/systems/sega/background/SEGA6.gif)"
 ];
 
 system2.sbackground= [
-	 "url(assets/systems/nes/background/nes1.jpg)"
-	,"url(assets/systems/nes/background/nes2.jpg)"
-	,"url(assets/systems/nes/background/nes3.png)"
-	,"url(assets/systems/nes/background/nes4.jpg)"
-	,"url(assets/systems/nes/background/nes5.jpg)"	
+	 "url(assets/systems/nes/background/NES1.jpg)"
+	,"url(assets/systems/nes/background/NES2.jpg)"
+	,"url(assets/systems/nes/background/NES3.png)"
+	,"url(assets/systems/nes/background/NES4.jpg)"
+	,"url(assets/systems/nes/background/NES5.jpg)"	
 ];
 
 system3.sbackground= [
-	 "url(assets/systems/snes/background/snes1.jpeg)"
-	,"url(assets/systems/snes/background/snes2.jpg)"
-	,"url(assets/systems/snes/background/snes3.png)"
-	,"url(assets/systems/snes/background/snes4.jpg)"
-	,"url(assets/systems/snes/background/snes5.jpg)"
-	,"url(assets/systems/snes/background/snes6.jpg)"
-	,"url(assets/systems/snes/background/snes7.jpg)"
-	,"url(assets/systems/snes/background/snes8.jpg)"
-	,"url(assets/systems/snes/background/snes9.png)"
+	 "url(assets/systems/snes/background/SNES1.jpeg)"
+	,"url(assets/systems/snes/background/SNES2.jpg)"
+	,"url(assets/systems/snes/background/SNES3.png)"
+	,"url(assets/systems/snes/background/SNES4.jpg)"
+	,"url(assets/systems/snes/background/SNES5.jpg)"
+	,"url(assets/systems/snes/background/SNES6.jpg)"
+	,"url(assets/systems/snes/background/SNES7.jpg)"
+	,"url(assets/systems/snes/background/SNES8.jpg)"
+	,"url(assets/systems/snes/background/SNES9.png)"
 ];
 
 system4.sbackground=[
-	 "url(assets/systems/gameboy/background/gboy1.jpg)"
-	,"url(assets/systems/gameboy/background/gboy2.jpg)"
-	,"url(assets/systems/gameboy/background/gboy3.jpg)"
-	,"url(assets/systems/gameboy/background/gboy4.jpg)"
-	,"url(assets/systems/gameboy/background/gboy5.jpg)"
+	 "url(assets/systems/gameboy/background/GBOY1.jpg)"
+	,"url(assets/systems/gameboy/background/GBOY2.jpg)"
+	,"url(assets/systems/gameboy/background/GBOY3.jpg)"
+	,"url(assets/systems/gameboy/background/GBOY4.jpg)"
+	,"url(assets/systems/gameboy/background/GBOY5.jpg)"
 	]
 
 //game background can systems background 
