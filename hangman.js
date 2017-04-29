@@ -1,11 +1,11 @@
 //Object definition for games and their associated properties
-function game(gameName, gameHistory, gameSound, gameBackground, gameConsole){
+function game(gameName, gameConsole, gameSound, gameBackground, gameHistory){
 
 	this.gName=gameName;
+	this.gConsole=gameConsole;
 	this.gHistory=gameHistory;
 	this.gSound=gameSound;
 	this.gBackground=gameBackground;
-	this.gConsole=gameConsole;
 	//property of the constructor/object and not of the instance. Counts instances of the constructor/object.
 	game.instances++;
 }
@@ -26,34 +26,60 @@ function systems(systemsName, systemsBackground, systemsSound){
 systems.instances=0;
 
 //Defining instances of games that will make up the word bank
-var game1 = new game("Streets of Rage", "Rage History", "Rage sound", "Rage background", "SEGA");
-var game2 = new game("Sonic the Hedgehog", "Sonic History", "Sonic sound", "Sonic background", "SEGA");
-var game3 = new game("Super Mario Bros", "Mario History", "Mario Sound", "Mario Background", "NES");
+var game1 = new game("Streets of Rage II", "SEGA");
+var game2 = new game("Sonic the Hedgehog II", "SEGA");
+var game3 = new game("Super Mario Bros", "NES");
+var game4 = new game("Duck Hunt", "NES");
+var game5 = new game("Donkey Kong Country", "SNES");
+var game6 = new game("Street Fighter II", "SNES");
+var game7 = new game("Contra", "NES");
+var game8 = new game("Pokemon", "GBOY");
+var game9 = new game("Tetris", "GBOY");
 
 
 //Defining instances of systems that will relate back to games
 var system1 = new systems("SEGA");
 var system2 = new systems("NES");
 var system3 = new systems("SNES");
+var system4 = new systems("GBOY");
 
 //Setting system backgrounds
 system1.sbackground= [
 	 "url(assets/systems/sega/background/sega1.png)"
 	,"url(assets/systems/sega/background/sega2.png)"
 	,"url(assets/systems/sega/background/sega3.jpg)"
+	,"url(assets/systems/sega/background/sega4.jpg)"
+	,"url(assets/systems/sega/background/sega5.png)"
+	,"url(assets/systems/sega/background/sega6.gif)"
 ];
 
 system2.sbackground= [
 	 "url(assets/systems/nes/background/nes1.jpg)"
 	,"url(assets/systems/nes/background/nes2.jpg)"
-	,"url(assets/systems/nes/background/nes3.png)"	
+	,"url(assets/systems/nes/background/nes3.png)"
+	,"url(assets/systems/nes/background/nes4.jpg)"
+	,"url(assets/systems/nes/background/nes5.jpg)"	
 ];
 
 system3.sbackground= [
 	 "url(assets/systems/snes/background/snes1.jpeg)"
 	,"url(assets/systems/snes/background/snes2.jpg)"
 	,"url(assets/systems/snes/background/snes3.png)"
+	,"url(assets/systems/snes/background/snes4.jpg)"
+	,"url(assets/systems/snes/background/snes5.jpg)"
+	,"url(assets/systems/snes/background/snes6.jpg)"
+	,"url(assets/systems/snes/background/snes7.jpg)"
+	,"url(assets/systems/snes/background/snes8.jpg)"
+	,"url(assets/systems/snes/background/snes9.png)"
 ];
+
+system4.sbackground=[
+	 "url(assets/systems/gameboy/background/gboy1.jpg)"
+	,"url(assets/systems/gameboy/background/gboy2.jpg)"
+	,"url(assets/systems/gameboy/background/gboy3.jpg)"
+	,"url(assets/systems/gameboy/background/gboy4.jpg)"
+	,"url(assets/systems/gameboy/background/gboy5.jpg)"
+	]
 
 //game background can systems background 
 //game sound can be systems sound "SEGA" or can be intro to game music
@@ -69,7 +95,7 @@ var currentSystem = " ";
 //Populates word bank will always equal to the number of instances of game there are.
 for (i=1; i<=game.instances; i++){
 	var gameVar = "game" + i;
-	//console.log(window[gameVar]);
+	console.log(window[gameVar]);
 	wordArray.push(window[gameVar].gName);
 }
 
@@ -229,9 +255,17 @@ function initialize (){
 	setupTheme();
 	setGameBoard();
 
-	document.getElementsByClassName("startUp")[0].classList.toggle("invisible");
-	document.getElementsByClassName("flexBodyGame")[0].classList.toggle("invisible");
-}
+	if (!document.getElementsByClassName("startUp")[0].classList.contains("invisible")){
+		document.getElementsByClassName("startUp")[0].classList.toggle("invisible");
+		document.getElementsByClassName("flexBodyGame")[0].classList.toggle("invisible");
+	}
+	else if(!document.getElementsByClassName("win")[0].classList.contains("invisible")){
+		document.getElementsByClassName("flexBodyGame")[0].classList.toggle("invisible");
+		document.getElementsByClassName("win")[0].classList.toggle("invisible");
+	}
+};
+
+
 
 // function to update the the incorrect letter array and the current game board with the correct letters (moved to the user input check function)
 // function gameBoardUpdate(x){

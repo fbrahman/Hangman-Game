@@ -50,11 +50,6 @@ h3{
 	font-size: 1em;
 }
 
-div{
-	border-style: solid;
-	border-width: 1px;
-	border-color: yellow;
-}
 p{
 	font-size: .85em;
 	line-height: 1.7em;
@@ -119,14 +114,7 @@ progress, progress::-webkit-progress-value {
 /*Main game board styling*/
 .flexBodyGame{
 	display: flex;
-	border-style: solid;
-	border-width: 5px;
-	border-color: red;
-	/*justify-content: center;*/
-	/*align-items: center;*/
 	min-height: 95%;
-/*Hide Main gameboard*/
-	/*display:none;*/
 }
 
 #rightSide, #leftSide{
@@ -138,9 +126,6 @@ progress, progress::-webkit-progress-value {
 	flex: 1;
 }
 
-#hpHeading{
-	/*padding: 2%;*/
-}
 
 /*Styling for left column*/
 .flexLeft{
@@ -157,7 +142,6 @@ progress, progress::-webkit-progress-value {
 
 #hintText{
 	text-align: justify;
-	padding: 1%;
 }
 
 /*Styling for right column*/
@@ -187,30 +171,38 @@ progress, progress::-webkit-progress-value {
 	color: red;
 }
 
+.textBackground{
+	background-color: rgba(0,0,0,.6);
+	padding: 0 3% 0 3%;
+	border-style: solid;
+	border-width: 1px;
+	border-color: yellow;
+}
+
 /*Start-Up Screen Styling*/
-.startUp{
+.startUp, .win{
 	text-align: center;
 	border-style: dashed;
-	padding: .5em;
+	border-color: yellow;
+	padding: .75em;
 	display:flex;
 	flex-direction: column;
 	margin-top: 10%;
-/*Hide start up page*/
-	/*display: none;*/
 }
 
-#startButton{
+#startButton, #resetButton, #playAgain{
 	border-width: 1px;
 	border-style: dashed;
 	border-color: white;
-	background: black;
+	background-color: rgba(0,0,0,.4);
 	border-radius: .5em;	
 	color: white;
 	padding: 1em 2em;
 	text-align: center;
 	font-family: 'Press Start 2P', cursive; player 2p;
 	font-size: 16px;
-	margin: 4px 2px;
+	margin: 3% 0% 3% 0%;
+	width: 100%;
 }
 
 #welcomeText{
@@ -231,3 +223,4 @@ progress, progress::-webkit-progress-value {
 .invisible{
 	display: none;
 }
+
